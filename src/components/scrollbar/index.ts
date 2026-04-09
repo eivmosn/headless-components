@@ -1,6 +1,5 @@
-import Scrollbar from './scrollbar.vue'
-import './style.css'
+import Scrollbar from './src/scrollbar.vue'
 
-export * from './types'
+export * from './src/types'
 export { Scrollbar }
 export default Scrollbar
