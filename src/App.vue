@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { ScrollbarDirection } from './components/scrollbar'
 import { ref } from 'vue'
+// import { MonacoEditor } from './components/monaco-editor'
 import { ScrollableTabs } from './components/scrollable-tabs'
 import { Scrollbar } from './components/scrollbar'
 import './components/scrollbar/src/style.css'
@@ -41,6 +42,12 @@ const tabs = [
     value: 'flow',
   },
 ]
+
+// const code = ref(`function greet(name: string) {
+//   return \`Hello, \${name}!\`
+// }
+
+// console.log(greet('Monaco'))`)
 </script>
 
 <template>
@@ -55,6 +62,10 @@ const tabs = [
   <div class="gallary" style="margin-top: 10px;">
     <ScrollableTabs v-model="activated" :tabs="tabs" />
   </div>
+
+  <!-- <div class="editor-demo" style="margin-top: 16px;">
+    <MonacoEditor v-model="code" language="typescript" />
+  </div> -->
 </template>
 
 <style>
@@ -68,5 +79,9 @@ const tabs = [
   width: 500px;
   border: 1px solid;
   white-space: nowrap;
+}
+
+.editor-demo {
+  width: 800px;
 }
 </style>
