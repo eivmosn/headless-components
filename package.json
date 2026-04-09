@@ -1,0 +1,24 @@
+{
+  "name": "scrollbar",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.5.32"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^8.1.1",
+    "@types/node": "^24.12.2",
+    "@vitejs/plugin-vue": "^6.0.5",
+    "@vue/tsconfig": "^0.9.1",
+    "eslint": "^10.2.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.0.4",
+    "vue-tsc": "^3.2.6"
+  }
+}
