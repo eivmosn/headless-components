@@ -3,57 +3,35 @@ import type { MonacoEditorInstance } from './components/monaco-editor'
 import type { ScrollbarDirection } from './components/scrollbar'
 import { ref } from 'vue'
 import { MonacoEditor } from './components/monaco-editor'
+import Polaroid from './components/polaroid/index.vue'
 import { ScrollableTabs } from './components/scrollable-tabs'
 import { Scrollbar } from './components/scrollbar'
 import './components/scrollbar/src/style.css'
 
-function endReached(direction: ScrollbarDirection) {
-  console.warn('is-end', direction)
-}
-
-const activated = ref('message')
+const lastReached = ref<ScrollbarDirection | ''>('')
+const editorRef = ref<MonacoEditorInstance | null>(null)
+const activeTab = ref('editor')
 
 const tabs = [
-  {
-    label: '我的待办',
-    value: 'todo',
-  },
-  {
-    label: '我的消息',
-    value: 'message',
-  },
-  {
-    label: '用户管理',
-    value: 'users',
-  },
-  {
-    label: '统一认证应用',
-    value: 'apps',
-  },
-  {
-    label: '人员同步日志',
-    value: 'sync',
-  },
-  {
-    label: '系统字典',
-    value: 'sys-dict',
-  },
-  {
-    label: '流程设计',
-    value: 'flow',
-  },
+  { label: 'Editor Playground', value: 'editor' },
+  { label: 'Tabs Preview', value: 'tabs' },
+  { label: 'Scrollbar Feed', value: 'scrollbar' },
+  { label: 'Settings Center', value: 'settings' },
+  { label: 'Audit Records', value: 'audit' },
+  { label: 'Integration Hub', value: 'integration' },
 ]
 
 const code = ref(`function greet(name: string) {
   return \`Hello, \${name}!\`
 }
 
-console.log(greet('Monaco'))`)
+console.log(greet('Monaco'))
+`)
 
 const globals = [
   {
     name: 'USER',
-    description: '当前登录用户信息，由运行时动态注入',
+    description: 'Current runtime user info injected after execution',
     type: `{
       id: string
       name: string
@@ -66,39 +44,25 @@ const globals = [
 const derivations = [
   {
     name: 'ctx',
-    description: '运行时上下文对象',
+    description: 'Runtime context object',
     value: {
       name: 'Tom',
       age: 18,
       hobbies: ['1', '2', '3'],
-      food: [
-        {
-          name: 'apple',
-          value: 'apple',
-        },
-      ],
       get: {
         pos: '1123',
       },
       hello: {
         $type: 'function',
-        description: '返回一个示例字符串',
+        description: 'Return a sample greeting string',
         params: [
           {
             name: 'name',
             type: 'string',
-            description: '要问候的名字',
+            description: 'Name to greet',
           },
         ],
         returns: 'string',
-        value(name: string) {
-          return `hello ${name}`
-        },
-      },
-      version: {
-        $type: 'value',
-        description: '上下文版本号',
-        value: '1.0.0',
       },
     },
   },
@@ -110,40 +74,18 @@ const tags: Array<{
   className?: string
   type?: 'primary' | 'success' | 'warning' | 'danger'
 }> = [
-  {
-    name: '日期',
-    value: 'DATE',
-    className: 'my-warning',
-    type: 'warning',
-  },
-  {
-    name: '事件',
-    value: 'EVENT',
-    className: 'my-primary',
-    type: 'primary',
-  },
-  {
-    name: '事件2',
-    value: 'EVENT2',
-    className: 'my-error',
-    type: 'danger',
-  },
-  {
-    name: '事件3',
-    value: 'EVENT3',
-    className: 'my-success',
-    type: 'success',
-  },
+  { name: 'Date', value: 'DATE', className: 'biz-tag--warning', type: 'warning' },
+  { name: 'Event', value: 'EVENT', className: 'biz-tag--primary', type: 'primary' },
+  { name: 'Error', value: 'ERROR', className: 'biz-tag--danger', type: 'danger' },
+  { name: 'Done', value: 'SUCCESS', className: 'biz-tag--success', type: 'success' },
 ]
 
-const editorRef = ref<MonacoEditorInstance | null>(null)
+const feedCards = Array.from({ length: 12 }, (_, index) => ({
+  title: `Feed Item ${index + 1}`,
+  body: 'Use these cards to verify custom scrollbar movement, edge callbacks, and resize updates.',
+}))
 
-function insertToEditor(tag: {
-  value: string
-  name: string
-  type?: 'primary' | 'success' | 'warning' | 'danger'
-  className?: string
-}) {
+function insertToEditor(tag: typeof tags[number]) {
   editorRef.value?.insertTag({
     value: tag.value,
     label: tag.name,
@@ -151,95 +93,307 @@ function insertToEditor(tag: {
     className: tag.className,
   })
 }
+
+function endReached(direction: ScrollbarDirection) {
+  lastReached.value = direction
+}
 </script>
 
 <template>
-  <div class="container">
-    <Scrollbar always @end-reached="endReached">
-      <div v-for="i in 200" :key="i">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat saepe architecto ab, rem eum, error sit debitis mollitia reiciendis explicabo corrupti esse at atque pariatur facilis blanditiis cum amet maiores!
-      </div>
-    </Scrollbar>
-  </div>
+  <Scrollbar class="page-scrollbar" height="100vh" always @end-reached="endReached">
+    <main class="showcase-page">
+      <header class="page-header">
+        <h1>Component Showcase</h1>
+        <p>Simple cards for testing the custom Scrollbar, ScrollableTabs, and MonacoEditor components.</p>
+      </header>
 
-  <div class="gallary" style="margin-top: 10px;">
-    <ScrollableTabs v-model="activated" :tabs="tabs" />
-  </div>
+      <section class="card-grid">
+        <article class="showcase-card">
+          <div class="card-head">
+            <h2>Earth</h2>
+            <p>Nested custom scrolling with edge event feedback and dense content.</p>
+          </div>
+          <div class="card-body">
+            <div style="width: 500px; height: 500px;">
+              <Polaroid />
+            </div>
+          </div>
+        </article>
 
-  <div class="editor-demo" style="margin-top: 16px;">
-    <MonacoEditor
-      ref="editorRef"
-      v-model="code"
-      language="typescript"
-      placeholder="请输入"
-      :globals="globals"
-      :derivations="derivations"
-    />
+        <article class="showcase-card">
+          <div class="card-head">
+            <h2>Scrollbar</h2>
+            <p>Nested custom scrolling with edge event feedback and dense content.</p>
+          </div>
 
-    <div class="tags">
-      <div>点击插入到编辑器</div>
+          <div class="card-body">
+            <div class="status-badge">
+              Last edge event: <strong>{{ lastReached || 'none yet' }}</strong>
+            </div>
 
-      <div v-for="t in tags" :key="t.value" class="tag" @click="insertToEditor(t)">
-        {{ t.name }}
-      </div>
-    </div>
-  </div>
+            <Scrollbar class="inner-scrollbar" height="280px" always>
+              <div class="feed-grid">
+                <article v-for="card in feedCards" :key="card.title" class="feed-card">
+                  <h3>{{ card.title }}</h3>
+                  <p>{{ card.body }}</p>
+                </article>
+              </div>
+            </Scrollbar>
+          </div>
+        </article>
+
+        <article class="showcase-card">
+          <div class="card-head">
+            <h2>ScrollableTabs</h2>
+            <p>Horizontal overflow, active state sync, and previous/next navigation controls.</p>
+          </div>
+
+          <div class="card-body">
+            <ScrollableTabs v-model="activeTab" :tabs="tabs" />
+
+            <div class="tab-preview">
+              <strong>Current tab:</strong>
+              <span>{{ activeTab }}</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="showcase-card showcase-card--editor">
+          <div class="card-head">
+            <h2>MonacoEditor</h2>
+            <p>Localized editor with globals, derivations, snippets, placeholder, and tag insertion.</p>
+          </div>
+
+          <div class="card-body editor-card-body">
+            <div class="editor-panel">
+              <MonacoEditor
+                ref="editorRef"
+                v-model="code"
+                language="typescript"
+                placeholder="Type here to test editor extensions"
+                :globals="globals"
+                :derivations="derivations"
+                height="420px"
+              />
+            </div>
+
+            <aside class="editor-tools">
+              <div class="tool-block">
+                <strong>Insert tags</strong>
+                <p>Click a tag below to insert it at the current cursor position.</p>
+              </div>
+
+              <div class="tag-list">
+                <button
+                  v-for="tag in tags"
+                  :key="tag.value"
+                  class="tag-chip"
+                  type="button"
+                  @click="insertToEditor(tag)"
+                >
+                  {{ tag.name }}
+                </button>
+              </div>
+            </aside>
+          </div>
+        </article>
+      </section>
+    </main>
+  </Scrollbar>
 </template>
 
 <style>
-.gallary {
-  border: 1px solid;
-  padding: 10px;
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap');
+
+:root {
+  --page-bg: #f4f7ff;
+  --card-bg: #ffffff;
+  --card-line: #d9e2ff;
+  --text-main: #1f2340;
+  --text-subtle: #66708f;
+  --primary: #4f46e5;
 }
 
-.container {
-  height: 500px;
-  width: 500px;
-  border: 1px solid;
-  white-space: nowrap;
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #f8faff 0%, var(--page-bg) 100%);
+  color: var(--text-main);
+  font-family: 'IBM Plex Sans', sans-serif;
 }
 
-.editor-demo {
-  width: 800px;
-  display: flex;
+#app {
+  min-height: 100vh;
 }
 
-.tags {
-  display: flex;
+.showcase-page {
+  width: min(1180px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 28px 0 40px;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.page-header {
+  margin-bottom: 20px;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(2rem, 6vw, 3.6rem);
+  line-height: 1;
+}
+
+.page-header p,
+.card-head p,
+.feed-card p,
+.tool-block p {
+  color: var(--text-subtle);
+}
+
+.card-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.showcase-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-line);
+  border-radius: 22px;
+  padding: 20px;
+  box-shadow: 0 18px 40px rgba(79, 70, 229, 0.06);
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.card-head {
+  margin-bottom: 16px;
+}
+
+.card-head h2,
+.feed-card h3 {
+  margin: 0;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.card-head p {
+  margin: 8px 0 0;
+}
+
+.status-badge,
+.tab-preview {
+  display: inline-flex;
   align-items: center;
-  gap: 1rem;
-  margin-top: 20px;
-  padding: 4px;
-  width: 400px;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: var(--text-main);
 }
 
-.tag {
-  border: 1px solid #eee;
-  border-radius: 2px;
-  padding: 4px;
+.inner-scrollbar {
+  border: 1px solid #e5eafc;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
-.my-warning {
+.feed-grid {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+}
+
+.feed-card {
+  border-radius: 16px;
+  padding: 14px;
+  background: #f8faff;
+  border: 1px solid #e6ecff;
+}
+
+.feed-card h3 {
+  font-size: 15px;
+}
+
+.editor-card-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 16px;
+  min-width: 0;
+}
+
+.card-body,
+.editor-panel,
+.tabs-showcase,
+.tab-preview {
+  min-width: 0;
+}
+
+.editor-tools {
+  padding: 16px;
+  border-radius: 16px;
+  background: #f8faff;
+  border: 1px solid #e6ecff;
+}
+
+.tool-block strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.tag-chip {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 9px 14px;
+  background: #eef2ff;
+  color: var(--text-main);
+  cursor: pointer;
+  font: inherit;
+}
+
+.tag-chip:hover {
+  background: #e2e8ff;
+}
+
+.biz-tag--warning {
   background: #fef3c7;
   color: #92400e;
   box-shadow: inset 0 0 0 1px #f59e0b;
 }
 
-.my-primary {
+.biz-tag--primary {
   background: #dbeafe;
   color: #1d4ed8;
   box-shadow: inset 0 0 0 1px #60a5fa;
 }
 
-.my-error {
+.biz-tag--danger {
   background: #fee2e2;
   color: #b91c1c;
   box-shadow: inset 0 0 0 1px #f87171;
 }
 
-.my-success {
+.biz-tag--success {
   background: #dcfce7;
   color: #15803d;
   box-shadow: inset 0 0 0 1px #4ade80;
+}
+
+@media (max-width: 900px) {
+  .editor-card-body {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase-page {
+    width: min(100vw - 24px, 1180px);
+  }
 }
 </style>
