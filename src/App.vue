@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { MonacoEditorInstance } from './components/monaco-editor'
 import type { ScrollbarDirection } from './components/scrollbar'
 import { ref } from 'vue'
 import { MonacoEditor } from './components/monaco-editor'
@@ -102,6 +103,54 @@ const derivations = [
     },
   },
 ]
+
+const tags: Array<{
+  name: string
+  value: string
+  className?: string
+  type?: 'primary' | 'success' | 'warning' | 'danger'
+}> = [
+  {
+    name: '日期',
+    value: 'DATE',
+    className: 'my-warning',
+    type: 'warning',
+  },
+  {
+    name: '事件',
+    value: 'EVENT',
+    className: 'my-primary',
+    type: 'primary',
+  },
+  {
+    name: '事件2',
+    value: 'EVENT2',
+    className: 'my-error',
+    type: 'danger',
+  },
+  {
+    name: '事件3',
+    value: 'EVENT3',
+    className: 'my-success',
+    type: 'success',
+  },
+]
+
+const editorRef = ref<MonacoEditorInstance | null>(null)
+
+function insertToEditor(tag: {
+  value: string
+  name: string
+  type?: 'primary' | 'success' | 'warning' | 'danger'
+  className?: string
+}) {
+  editorRef.value?.insertTag({
+    value: tag.value,
+    label: tag.name,
+    type: tag.type,
+    className: tag.className,
+  })
+}
 </script>
 
 <template>
@@ -119,12 +168,21 @@ const derivations = [
 
   <div class="editor-demo" style="margin-top: 16px;">
     <MonacoEditor
+      ref="editorRef"
       v-model="code"
       language="typescript"
       placeholder="请输入"
       :globals="globals"
       :derivations="derivations"
     />
+
+    <div class="tags">
+      <div>点击插入到编辑器</div>
+
+      <div v-for="t in tags" :key="t.value" class="tag" @click="insertToEditor(t)">
+        {{ t.name }}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -143,5 +201,45 @@ const derivations = [
 
 .editor-demo {
   width: 800px;
+  display: flex;
+}
+
+.tags {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 20px;
+  padding: 4px;
+  width: 400px;
+}
+
+.tag {
+  border: 1px solid #eee;
+  border-radius: 2px;
+  padding: 4px;
+}
+
+.my-warning {
+  background: #fef3c7;
+  color: #92400e;
+  box-shadow: inset 0 0 0 1px #f59e0b;
+}
+
+.my-primary {
+  background: #dbeafe;
+  color: #1d4ed8;
+  box-shadow: inset 0 0 0 1px #60a5fa;
+}
+
+.my-error {
+  background: #fee2e2;
+  color: #b91c1c;
+  box-shadow: inset 0 0 0 1px #f87171;
+}
+
+.my-success {
+  background: #dcfce7;
+  color: #15803d;
+  box-shadow: inset 0 0 0 1px #4ade80;
 }
 </style>

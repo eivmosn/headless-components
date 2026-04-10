@@ -62,6 +62,13 @@ export interface MonacoDerivationVariable {
   languages?: string[]
 }
 
+export interface MonacoEditorInsertTag {
+  value: string
+  label?: string
+  type?: 'primary' | 'success' | 'warning' | 'danger'
+  className?: string
+}
+
 export interface MonacoEditorProps {
   modelValue?: string
   language?: string
@@ -71,6 +78,11 @@ export interface MonacoEditorProps {
   derivations?: MonacoDerivationVariable[]
   globals?: MonacoGlobalVariable[]
   options?: monaco.editor.IStandaloneEditorConstructionOptions
+}
+
+export interface MonacoEditorInstance {
+  focus: () => void
+  insertTag: (tag: MonacoEditorInsertTag) => void
 }
 
 export function ensureMonacoEnvironment() {

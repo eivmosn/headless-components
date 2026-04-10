@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { MonacoEditorProps } from './editor'
+import type { MonacoEditorInstance, MonacoEditorProps } from './editor'
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { ensureMonacoEnvironment, monaco } from './editor'
 import {
@@ -9,6 +9,7 @@ import {
   createGlobalDeclarationsController,
   createPlaceholderController,
   createSnippetController,
+  createTagTokenController,
 } from './extensions'
 
 const props = withDefaults(defineProps<MonacoEditorProps>(), {
@@ -32,6 +33,7 @@ let derivationController: ReturnType<typeof createDerivationController> | null =
 let findWidgetHackController: ReturnType<typeof createFindWidgetHackController> | null = null
 let placeholderController: ReturnType<typeof createPlaceholderController> | null = null
 let snippetController: ReturnType<typeof createSnippetController> | null = null
+let tagTokenController: ReturnType<typeof createTagTokenController> | null = null
 let globalDeclarationsController: ReturnType<typeof createGlobalDeclarationsController> | null = null
 let disposeExtensionBindings: (() => void) | null = null
 let isSyncingFromOutside = false
@@ -65,6 +67,7 @@ function createEditor() {
 
   placeholderController = createPlaceholderController(editor, monaco, props.placeholder)
   snippetController = createSnippetController(editor, monaco)
+  tagTokenController = createTagTokenController(editor, monaco)
   derivationController = createDerivationController(monaco, props.derivations)
   globalDeclarationsController = createGlobalDeclarationsController(monaco, props.globals)
   findWidgetHackController = createFindWidgetHackController(editor)
@@ -94,6 +97,8 @@ function disposeEditor() {
   findWidgetHackController = null
   globalDeclarationsController?.dispose()
   globalDeclarationsController = null
+  tagTokenController?.dispose()
+  tagTokenController = null
   snippetController?.dispose()
   snippetController = null
   placeholderController?.dispose()
@@ -124,6 +129,15 @@ watch(() => props.modelValue, (value) => {
   editor.setValue(value)
   isSyncingFromOutside = false
 })
+
+defineExpose<MonacoEditorInstance>({
+  focus() {
+    editor?.focus()
+  },
+  insertTag(tag) {
+    tagTokenController?.insertTag(tag)
+  },
+})
 </script>
 
 <template>
@@ -145,5 +159,43 @@ watch(() => props.modelValue, (value) => {
   width: 100%;
   height: 100%;
   position: relative;
+}
+
+:deep(.monaco-editor-inline-tag-source) {
+  font-size: 0;
+  opacity: 0;
+}
+
+:deep(.monaco-editor-inline-tag) {
+  background: #e8f1ff;
+  color: #1d4ed8;
+  border-radius: 999px;
+  font-size: 12px;
+  padding: 4px 12px;
+  box-shadow: inset 0 0 0 1px #a8c5ff;
+}
+
+:deep(.monaco-editor-inline-tag--primary) {
+  background: #e8f1ff;
+  color: #1d4ed8;
+  box-shadow: inset 0 0 0 1px #a8c5ff;
+}
+
+:deep(.monaco-editor-inline-tag--success) {
+  background: #eafaf0;
+  color: #15803d;
+  box-shadow: inset 0 0 0 1px #86efac;
+}
+
+:deep(.monaco-editor-inline-tag--warning) {
+  background: #fff7e6;
+  color: #b45309;
+  box-shadow: inset 0 0 0 1px #fcd34d;
+}
+
+:deep(.monaco-editor-inline-tag--danger) {
+  background: #ffecec;
+  color: #b91c1c;
+  box-shadow: inset 0 0 0 1px #fca5a5;
 }
 </style>
