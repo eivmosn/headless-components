@@ -1,7 +1,10 @@
-// import MonacoEditor from './index.vue'
+import MonacoEditor from './index.vue'
 
-// export {
-//   MonacoEditor,
-// }
+export {
+  MonacoEditor,
+}
 
-// export default MonacoEditor
+export * from './editor'
+export * from './extensions'
+
+export default MonacoEditor

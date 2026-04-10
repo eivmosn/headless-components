@@ -1,21 +1,15 @@
-<!-- <script setup lang="ts">
-import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import * as monaco from './editor/esm/vs/editor/editor.api.js'
-import EditorWorker from './editor/esm/vs/editor/editor.worker.js?worker'
-
-import CssWorker from './editor/esm/vs/language/css/css.worker.js?worker'
-import HtmlWorker from './editor/esm/vs/language/html/html.worker.js?worker'
-import JsonWorker from './editor/esm/vs/language/json/json.worker.js?worker'
-import TsWorker from './editor/esm/vs/language/typescript/ts.worker.js?worker'
-import './editor/esm/vs/editor/editor.main.js'
-
-interface MonacoEditorProps {
-  modelValue?: string
-  language?: string
-  theme?: string
-  height?: string
-  options?: monaco.editor.IStandaloneEditorConstructionOptions
-}
+<script setup lang="ts">
+import type { MonacoEditorProps } from './editor'
+import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { ensureMonacoEnvironment, monaco } from './editor'
+import {
+  bindEditorExtensions,
+  createDerivationController,
+  createFindWidgetHackController,
+  createGlobalDeclarationsController,
+  createPlaceholderController,
+  createSnippetController,
+} from './extensions'
 
 const props = withDefaults(defineProps<MonacoEditorProps>(), {
   modelValue: '',
@@ -34,23 +28,13 @@ const containerRef = ref<HTMLDivElement | null>(null)
 let editor: monaco.editor.IStandaloneCodeEditor | null = null
 let model: monaco.editor.ITextModel | null = null
 let resizeObserver: ResizeObserver | null = null
+let derivationController: ReturnType<typeof createDerivationController> | null = null
+let findWidgetHackController: ReturnType<typeof createFindWidgetHackController> | null = null
+let placeholderController: ReturnType<typeof createPlaceholderController> | null = null
+let snippetController: ReturnType<typeof createSnippetController> | null = null
+let globalDeclarationsController: ReturnType<typeof createGlobalDeclarationsController> | null = null
+let disposeExtensionBindings: (() => void) | null = null
 let isSyncingFromOutside = false
-
-function ensureMonacoEnvironment() {
-  globalThis.MonacoEnvironment = {
-    getWorker(_: unknown, label: string) {
-      if (label === 'json')
-        return new JsonWorker()
-      if (label === 'css' || label === 'scss' || label === 'less')
-        return new CssWorker()
-      if (label === 'html' || label === 'handlebars' || label === 'razor')
-        return new HtmlWorker()
-      if (label === 'typescript' || label === 'javascript')
-        return new TsWorker()
-      return new EditorWorker()
-    },
-  }
-}
 
 function createEditor() {
   const container = containerRef.value
@@ -67,6 +51,9 @@ function createEditor() {
     tabSize: 2,
     theme: props.theme,
     model,
+    fixedOverflowWidgets: true,
+    smoothScrolling: true,
+    fontSize: 14,
     ...props.options,
   })
 
@@ -74,6 +61,20 @@ function createEditor() {
     if (isSyncingFromOutside || !editor)
       return
     emit('update:modelValue', editor.getValue())
+  })
+
+  placeholderController = createPlaceholderController(editor, monaco, props.placeholder)
+  snippetController = createSnippetController(editor, monaco)
+  derivationController = createDerivationController(monaco, props.derivations)
+  globalDeclarationsController = createGlobalDeclarationsController(monaco, props.globals)
+  findWidgetHackController = createFindWidgetHackController(editor)
+  disposeExtensionBindings = bindEditorExtensions(props, {
+    monaco,
+    getDerivationController: () => derivationController,
+    getEditor: () => editor,
+    getGlobalDeclarationsController: () => globalDeclarationsController,
+    getModel: () => model,
+    getPlaceholderController: () => placeholderController,
   })
 
   resizeObserver = new ResizeObserver(() => {
@@ -85,6 +86,18 @@ function createEditor() {
 function disposeEditor() {
   resizeObserver?.disconnect()
   resizeObserver = null
+  disposeExtensionBindings?.()
+  disposeExtensionBindings = null
+  derivationController?.dispose()
+  derivationController = null
+  findWidgetHackController?.dispose()
+  findWidgetHackController = null
+  globalDeclarationsController?.dispose()
+  globalDeclarationsController = null
+  snippetController?.dispose()
+  snippetController = null
+  placeholderController?.dispose()
+  placeholderController = null
   editor?.dispose()
   editor = null
   model?.dispose()
@@ -111,23 +124,6 @@ watch(() => props.modelValue, (value) => {
   editor.setValue(value)
   isSyncingFromOutside = false
 })
-
-watch(() => props.language, async (language) => {
-  if (!model)
-    return
-
-  monaco.editor.setModelLanguage(model, language)
-  await nextTick()
-  editor?.layout()
-})
-
-watch(() => props.theme, (theme) => {
-  monaco.editor.setTheme(theme)
-})
-
-watch(() => props.options, (options) => {
-  editor?.updateOptions(options)
-}, { deep: true })
 </script>
 
 <template>
@@ -139,15 +135,15 @@ watch(() => props.options, (options) => {
 <style scoped>
 .monaco-editor-shell {
   width: 100%;
-  min-height: 200px;
+  min-height: 220px;
   border: 1px solid #d9dde7;
-  border-radius: 10px;
-  overflow: hidden;
+  /* overflow: hidden; */
   background: #ffffff;
 }
 
 .monaco-editor-container {
   width: 100%;
   height: 100%;
+  position: relative;
 }
-</style> -->
+</style>
