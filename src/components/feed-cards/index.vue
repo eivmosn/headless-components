@@ -2,9 +2,7 @@
 import type { CSSProperties } from 'vue'
 import type { FeedCards } from './types'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import { Scrollbar } from '../scrollbar/index'
 import Card from './card.vue'
-import '../scrollbar/src/style.css'
 
 type ScrollRoot = string | HTMLElement | null | undefined
 
@@ -21,6 +19,7 @@ const props = withDefaults(defineProps<{
   scrollRoot?: ScrollRoot
   style?: CSSProperties
   className?: string
+  padding?: string
 }>(), {
   cards: () => [],
   cols: 5,
@@ -236,34 +235,29 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <Scrollbar>
-    <div :class="className" class="inner" :style="style">
-      <section ref="containerRef" class="feed-layout">
-        <div
-          class="feed-layout__grid" :style="{
-            gap: gapStyle,
-            gridTemplateColumns,
-          }"
-        >
-          <Card
-            v-for="card, index in visibleCards" :key="`${card.title}-${index}`" :card="card"
-            :loading="loadingSet.has(index)"
-          />
-        </div>
-        <div v-if="visibleCount < total" ref="sentinelRef" class="feed-layout__sentinel" />
-      </section>
+  <section ref="containerRef" :class="className" class="feed-layout">
+    <div
+      class="feed-layout__grid" :style="{
+        gap: gapStyle,
+        gridTemplateColumns,
+        padding,
+      }"
+    >
+      <Card
+        v-for="card, index in visibleCards" :key="`${card.title}-${index}`" :card="card"
+        :loading="loadingSet.has(index)"
+      />
     </div>
-  </Scrollbar>
+    <div v-if="visibleCount < total" ref="sentinelRef" class="feed-layout__sentinel" />
+  </section>
 </template>
 
 <style scoped>
-.inner {
-  height: 100%;
-  padding: 20px 40px;
-}
-
 .feed-layout {
-  min-width: 0;
+  height: 100%;
+  width: min(1920px, calc(100vw - 40px));
+  box-sizing: border-box;
+  margin: 0 auto;
 }
 
 .feed-layout__grid {

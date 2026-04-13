@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { FeedCards } from './types'
+import Scrollbar from '../scrollbar/src/scrollbar.vue'
 import FeedCardsLayout from './index.vue'
+import '../scrollbar/src/style.css'
 
 const cards: FeedCards = Array.from({ length: 80 }, (_, index) => {
   const rank = index + 1
@@ -22,16 +24,28 @@ const cards: FeedCards = Array.from({ length: 80 }, (_, index) => {
 </script>
 
 <template>
-  <FeedCardsLayout
-    :cards="cards"
-    :cols="5"
-    :max-cols="5"
-    :min-card-width="220"
-    :gap="20"
-    :render-ahead-rows="1"
-    :batch-rows="2"
-    :max-concurrent-loads="5"
-    :skeleton-delay="260"
-    scroll-root=".feed-demo-scroll"
-  />
+  <div class="box">
+    <Scrollbar>
+      <FeedCardsLayout
+        :cards="cards"
+        :cols="5"
+        :max-cols="5"
+        :min-card-width="220"
+        :gap="20"
+        :render-ahead-rows="1"
+        :batch-rows="2"
+        :max-concurrent-loads="5"
+        :skeleton-delay="260"
+        padding="10px"
+        scroll-root=".box"
+      />
+    </Scrollbar>
+  </div>
 </template>
+
+<style scoped>
+.box {
+  border: 1px solid;
+  height: 500px;
+}
+</style>
