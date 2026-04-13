@@ -3,7 +3,6 @@ import type { MonacoEditorInstance } from './components/monaco-editor'
 import type { ScrollbarDirection } from './components/scrollbar'
 import { ref } from 'vue'
 import { MonacoEditor } from './components/monaco-editor'
-import Polaroid from './components/polaroid/index.vue'
 import { ScrollableTabs } from './components/scrollable-tabs'
 import { Scrollbar } from './components/scrollbar'
 import './components/scrollbar/src/style.css'
@@ -108,18 +107,6 @@ function endReached(direction: ScrollbarDirection) {
       </header>
 
       <section class="card-grid">
-        <article class="showcase-card">
-          <div class="card-head">
-            <h2>Earth</h2>
-            <p>Nested custom scrolling with edge event feedback and dense content.</p>
-          </div>
-          <div class="card-body">
-            <div style="width: 500px; height: 500px;">
-              <Polaroid />
-            </div>
-          </div>
-        </article>
-
         <article class="showcase-card">
           <div class="card-head">
             <h2>Scrollbar</h2>
