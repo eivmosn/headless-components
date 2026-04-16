@@ -1,0 +1,1584 @@
+{
+  "nodes": [
+    {
+      "id": "znu2klfdrtn",
+      "type": "start",
+      "dimensions": {
+        "width": 34,
+        "height": 34
+      },
+      "computedPosition": {
+        "x": 35,
+        "y": 74,
+        "z": 0
+      },
+      "handleBounds": {
+        "source": [
+          {
+            "id": null,
+            "type": "source",
+            "nodeId": "znu2klfdrtn",
+            "position": "right",
+            "x": 29,
+            "y": 13,
+            "width": 8,
+            "height": 8
+          }
+        ],
+        "target": null
+      },
+      "selected": false,
+      "dragging": false,
+      "resizing": false,
+      "initialized": false,
+      "isParent": false,
+      "position": {
+        "x": 35,
+        "y": 74
+      },
+      "data": {
+        "tag": "znu2klfdrtn",
+        "tagRemark": "开始",
+        "label": "开始",
+        "type": "start"
+      },
+      "events": {},
+      "targetPosition": "left",
+      "sourcePosition": "right"
+    },
+    {
+      "id": "t0tp9la7t9j",
+      "type": "base",
+      "dimensions": {
+        "width": 120,
+        "height": 38
+      },
+      "computedPosition": {
+        "x": 100,
+        "y": 72,
+        "z": 0
+      },
+      "handleBounds": {
+        "source": [
+          {
+            "id": null,
+            "type": "source",
+            "nodeId": "t0tp9la7t9j",
+            "position": "right",
+            "x": 115,
+            "y": 15,
+            "width": 8,
+            "height": 8
+          }
+        ],
+        "target": [
+          {
+            "id": null,
+            "type": "target",
+            "nodeId": "t0tp9la7t9j",
+            "position": "left",
+            "x": -3,
+            "y": 15,
+            "width": 8,
+            "height": 8
+          }
+        ]
+      },
+      "selected": false,
+      "dragging": false,
+      "resizing": false,
+      "initialized": false,
+      "isParent": false,
+      "position": {
+        "x": 100,
+        "y": 72
+      },
+      "data": {
+        "tag": "t0tp9la7t9j",
+        "tagRemark": "基础节点",
+        "label": "基础节点",
+        "type": "base"
+      },
+      "events": {},
+      "targetPosition": "left",
+      "sourcePosition": "right"
+    },
+    {
+      "id": "xtmz3w9skx",
+      "type": "base",
+      "dimensions": {
+        "width": 120,
+        "height": 38
+      },
+      "computedPosition": {
+        "x": 260,
+        "y": 19,
+        "z": 0
+      },
+      "handleBounds": {
+        "source": [
+          {
+            "id": null,
+            "type": "source",
+            "nodeId": "xtmz3w9skx",
+            "position": "right",
+            "x": 115,
+            "y": 15,
+            "width": 8,
+            "height": 8
+          }
+        ],
+        "target": [
+          {
+            "id": null,
+            "type": "target",
+            "nodeId": "xtmz3w9skx",
+            "position": "left",
+            "x": -3,
+            "y": 15,
+            "width": 8,
+            "height": 8
+          }
+        ]
+      },
+      "selected": false,
+      "dragging": false,
+      "resizing": false,
+      "initialized": false,
+      "isParent": false,
+      "position": {
+        "x": 260,
+        "y": 19
+      },
+      "data": {
+        "tag": "xtmz3w9skx",
+        "tagRemark": "基础节点",
+        "label": "基础节点",
+        "type": "base"
+      },
+      "events": {},
+      "targetPosition": "left",
+      "sourcePosition": "right"
+    },
+    {
+      "id": "27d0vi27j7f",
+      "type": "end",
+      "dimensions": {
+        "width": 34,
+        "height": 34
+      },
+      "computedPosition": {
+        "x": 749.5,
+        "y": 74,
+        "z": 0
+      },
+      "handleBounds": {
+        "source": [
+          {
+            "id": null,
+            "type": "source",
+            "nodeId": "27d0vi27j7f",
+            "position": "left",
+            "x": -3,
+            "y": 13,
+            "width": 8,
+            "height": 8
+          }
+        ],
+        "target": null
+      },
+      "selected": false,
+      "dragging": false,
+      "resizing": false,
+      "initialized": false,
+      "isParent": false,
+      "position": {
+        "x": 749.5,
+        "y": 74
+      },
+      "data": {
+        "tag": "27d0vi27j7f",
+        "tagRemark": "结束",
+        "label": "结束",
+        "type": "end"
+      },
+      "events": {},
+      "targetPosition": "left",
+      "sourcePosition": "right"
+    },
+    {
+      "id": "fz23kzftrr9",
+      "type": "base",
+      "dimensions": {
+        "width": 120,
+        "height": 38
+      },
+      "computedPosition": {
+        "x": 420,
+        "y": 72,
+        "z": 0
+      },
+      "handleBounds": {
+        "source": [
+          {
+            "id": null,
+            "type": "source",
+            "nodeId": "fz23kzftrr9",
+            "position": "right",
+            "x": 115,
+            "y": 15,
+            "width": 8,
+            "height": 8
+          }
+        ],
+        "target": [
+          {
+            "id": null,
+            "type": "target",
+            "nodeId": "fz23kzftrr9",
+            "position": "left",
+            "x": -3,
+            "y": 15,
+            "width": 8,
+            "height": 8
+          }
+        ]
+      },
+      "selected": false,
+      "dragging": false,
+      "resizing": false,
+      "initialized": false,
+      "isParent": false,
+      "position": {
+        "x": 420,
+        "y": 72
+      },
+      "data": {
+        "tag": "fz23kzftrr9",
+        "tagRemark": "基础节点",
+        "label": "基础节点",
+        "type": "base"
+      },
+      "events": {},
+      "targetPosition": "left",
+      "sourcePosition": "right"
+    },
+    {
+      "id": "b2asyhsoitp",
+      "type": "base",
+      "dimensions": {
+        "width": 120,
+        "height": 38
+      },
+      "computedPosition": {
+        "x": 580,
+        "y": 72,
+        "z": 0
+      },
+      "handleBounds": {
+        "source": [
+          {
+            "id": null,
+            "type": "source",
+            "nodeId": "b2asyhsoitp",
+            "position": "right",
+            "x": 115,
+            "y": 15,
+            "width": 8,
+            "height": 8
+          }
+        ],
+        "target": [
+          {
+            "id": null,
+            "type": "target",
+            "nodeId": "b2asyhsoitp",
+            "position": "left",
+            "x": -3,
+            "y": 15,
+            "width": 8,
+            "height": 8
+          }
+        ]
+      },
+      "selected": false,
+      "dragging": false,
+      "resizing": false,
+      "initialized": false,
+      "isParent": false,
+      "position": {
+        "x": 580,
+        "y": 72
+      },
+      "data": {
+        "tag": "b2asyhsoitp",
+        "tagRemark": "基础节点",
+        "label": "基础节点",
+        "type": "base"
+      },
+      "events": {},
+      "targetPosition": "left",
+      "sourcePosition": "right"
+    },
+    {
+      "id": "xag8zkplfk",
+      "type": "base",
+      "dimensions": {
+        "width": 120,
+        "height": 38
+      },
+      "computedPosition": {
+        "x": 260,
+        "y": 125,
+        "z": 0
+      },
+      "handleBounds": {
+        "source": [
+          {
+            "id": null,
+            "type": "source",
+            "nodeId": "xag8zkplfk",
+            "position": "right",
+            "x": 115,
+            "y": 15,
+            "width": 8,
+            "height": 8
+          }
+        ],
+        "target": [
+          {
+            "id": null,
+            "type": "target",
+            "nodeId": "xag8zkplfk",
+            "position": "left",
+            "x": -3,
+            "y": 15,
+            "width": 8,
+            "height": 8
+          }
+        ]
+      },
+      "selected": false,
+      "dragging": false,
+      "resizing": false,
+      "initialized": false,
+      "isParent": false,
+      "position": {
+        "x": 260,
+        "y": 125
+      },
+      "data": {
+        "tag": "xag8zkplfk",
+        "tagRemark": "基础节点",
+        "label": "基础节点",
+        "type": "base"
+      },
+      "events": {},
+      "targetPosition": "left",
+      "sourcePosition": "right"
+    },
+    {
+      "id": "rg0xiuf52jc",
+      "type": "base",
+      "dimensions": {
+        "width": 120,
+        "height": 38
+      },
+      "computedPosition": {
+        "x": 260,
+        "y": 72,
+        "z": 0
+      },
+      "handleBounds": {
+        "source": [
+          {
+            "id": null,
+            "type": "source",
+            "nodeId": "rg0xiuf52jc",
+            "position": "right",
+            "x": 115,
+            "y": 15,
+            "width": 8,
+            "height": 8
+          }
+        ],
+        "target": [
+          {
+            "id": null,
+            "type": "target",
+            "nodeId": "rg0xiuf52jc",
+            "position": "left",
+            "x": -3,
+            "y": 15,
+            "width": 8,
+            "height": 8
+          }
+        ]
+      },
+      "selected": false,
+      "dragging": false,
+      "resizing": false,
+      "initialized": false,
+      "isParent": false,
+      "position": {
+        "x": 260,
+        "y": 72
+      },
+      "data": {
+        "tag": "rg0xiuf52jc",
+        "tagRemark": "基础节点",
+        "label": "基础节点",
+        "type": "base"
+      },
+      "events": {},
+      "targetPosition": "left",
+      "sourcePosition": "right"
+    }
+  ],
+  "edges": [
+    {
+      "id": "vueflow__edge-znu2klfdrtn-t0tp9la7t9j",
+      "type": "base",
+      "source": "znu2klfdrtn",
+      "target": "t0tp9la7t9j",
+      "sourceHandle": null,
+      "targetHandle": null,
+      "data": {},
+      "events": {},
+      "label": "",
+      "sourceNode": {
+        "id": "znu2klfdrtn",
+        "type": "start",
+        "dimensions": {
+          "width": 34,
+          "height": 34
+        },
+        "computedPosition": {
+          "x": 35,
+          "y": 74,
+          "z": 0
+        },
+        "handleBounds": {
+          "source": [
+            {
+              "id": null,
+              "type": "source",
+              "nodeId": "znu2klfdrtn",
+              "position": "right",
+              "x": 29,
+              "y": 13,
+              "width": 8,
+              "height": 8
+            }
+          ],
+          "target": null
+        },
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": false,
+        "isParent": false,
+        "position": {
+          "x": 35,
+          "y": 74
+        },
+        "data": {
+          "tag": "znu2klfdrtn",
+          "tagRemark": "开始",
+          "label": "开始",
+          "type": "start"
+        },
+        "events": {},
+        "targetPosition": "left",
+        "sourcePosition": "right"
+      },
+      "targetNode": {
+        "id": "t0tp9la7t9j",
+        "type": "base",
+        "dimensions": {
+          "width": 120,
+          "height": 38
+        },
+        "computedPosition": {
+          "x": 100,
+          "y": 72,
+          "z": 0
+        },
+        "handleBounds": {
+          "source": [
+            {
+              "id": null,
+              "type": "source",
+              "nodeId": "t0tp9la7t9j",
+              "position": "right",
+              "x": 115,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ],
+          "target": [
+            {
+              "id": null,
+              "type": "target",
+              "nodeId": "t0tp9la7t9j",
+              "position": "left",
+              "x": -3,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ]
+        },
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": false,
+        "isParent": false,
+        "position": {
+          "x": 100,
+          "y": 72
+        },
+        "data": {
+          "tag": "t0tp9la7t9j",
+          "tagRemark": "基础节点",
+          "label": "基础节点",
+          "type": "base"
+        },
+        "events": {},
+        "targetPosition": "left",
+        "sourcePosition": "right"
+      },
+      "sourceX": 72,
+      "sourceY": 91,
+      "targetX": 97,
+      "targetY": 91
+    },
+    {
+      "id": "vueflow__edge-t0tp9la7t9j-xtmz3w9skx",
+      "type": "base",
+      "source": "t0tp9la7t9j",
+      "target": "xtmz3w9skx",
+      "sourceHandle": null,
+      "targetHandle": null,
+      "data": {},
+      "events": {},
+      "label": "",
+      "sourceNode": {
+        "id": "t0tp9la7t9j",
+        "type": "base",
+        "dimensions": {
+          "width": 120,
+          "height": 38
+        },
+        "computedPosition": {
+          "x": 100,
+          "y": 72,
+          "z": 0
+        },
+        "handleBounds": {
+          "source": [
+            {
+              "id": null,
+              "type": "source",
+              "nodeId": "t0tp9la7t9j",
+              "position": "right",
+              "x": 115,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ],
+          "target": [
+            {
+              "id": null,
+              "type": "target",
+              "nodeId": "t0tp9la7t9j",
+              "position": "left",
+              "x": -3,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ]
+        },
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": false,
+        "isParent": false,
+        "position": {
+          "x": 100,
+          "y": 72
+        },
+        "data": {
+          "tag": "t0tp9la7t9j",
+          "tagRemark": "基础节点",
+          "label": "基础节点",
+          "type": "base"
+        },
+        "events": {},
+        "targetPosition": "left",
+        "sourcePosition": "right"
+      },
+      "targetNode": {
+        "id": "xtmz3w9skx",
+        "type": "base",
+        "dimensions": {
+          "width": 120,
+          "height": 38
+        },
+        "computedPosition": {
+          "x": 260,
+          "y": 19,
+          "z": 0
+        },
+        "handleBounds": {
+          "source": [
+            {
+              "id": null,
+              "type": "source",
+              "nodeId": "xtmz3w9skx",
+              "position": "right",
+              "x": 115,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ],
+          "target": [
+            {
+              "id": null,
+              "type": "target",
+              "nodeId": "xtmz3w9skx",
+              "position": "left",
+              "x": -3,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ]
+        },
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": false,
+        "isParent": false,
+        "position": {
+          "x": 260,
+          "y": 19
+        },
+        "data": {
+          "tag": "xtmz3w9skx",
+          "tagRemark": "基础节点",
+          "label": "基础节点",
+          "type": "base"
+        },
+        "events": {},
+        "targetPosition": "left",
+        "sourcePosition": "right"
+      },
+      "sourceX": 223,
+      "sourceY": 91,
+      "targetX": 257,
+      "targetY": 38
+    },
+    {
+      "id": "vueflow__edge-xtmz3w9skx-fz23kzftrr9",
+      "type": "base",
+      "source": "xtmz3w9skx",
+      "target": "fz23kzftrr9",
+      "sourceHandle": null,
+      "targetHandle": null,
+      "data": {},
+      "events": {},
+      "label": "",
+      "sourceNode": {
+        "id": "xtmz3w9skx",
+        "type": "base",
+        "dimensions": {
+          "width": 120,
+          "height": 38
+        },
+        "computedPosition": {
+          "x": 260,
+          "y": 19,
+          "z": 0
+        },
+        "handleBounds": {
+          "source": [
+            {
+              "id": null,
+              "type": "source",
+              "nodeId": "xtmz3w9skx",
+              "position": "right",
+              "x": 115,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ],
+          "target": [
+            {
+              "id": null,
+              "type": "target",
+              "nodeId": "xtmz3w9skx",
+              "position": "left",
+              "x": -3,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ]
+        },
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": false,
+        "isParent": false,
+        "position": {
+          "x": 260,
+          "y": 19
+        },
+        "data": {
+          "tag": "xtmz3w9skx",
+          "tagRemark": "基础节点",
+          "label": "基础节点",
+          "type": "base"
+        },
+        "events": {},
+        "targetPosition": "left",
+        "sourcePosition": "right"
+      },
+      "targetNode": {
+        "id": "fz23kzftrr9",
+        "type": "base",
+        "dimensions": {
+          "width": 120,
+          "height": 38
+        },
+        "computedPosition": {
+          "x": 420,
+          "y": 72,
+          "z": 0
+        },
+        "handleBounds": {
+          "source": [
+            {
+              "id": null,
+              "type": "source",
+              "nodeId": "fz23kzftrr9",
+              "position": "right",
+              "x": 115,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ],
+          "target": [
+            {
+              "id": null,
+              "type": "target",
+              "nodeId": "fz23kzftrr9",
+              "position": "left",
+              "x": -3,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ]
+        },
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": false,
+        "isParent": false,
+        "position": {
+          "x": 420,
+          "y": 72
+        },
+        "data": {
+          "tag": "fz23kzftrr9",
+          "tagRemark": "基础节点",
+          "label": "基础节点",
+          "type": "base"
+        },
+        "events": {},
+        "targetPosition": "left",
+        "sourcePosition": "right"
+      },
+      "sourceX": 383,
+      "sourceY": 38,
+      "targetX": 417,
+      "targetY": 91
+    },
+    {
+      "id": "vueflow__edge-fz23kzftrr9-b2asyhsoitp",
+      "type": "base",
+      "source": "fz23kzftrr9",
+      "target": "b2asyhsoitp",
+      "sourceHandle": null,
+      "targetHandle": null,
+      "data": {},
+      "events": {},
+      "label": "",
+      "sourceNode": {
+        "id": "fz23kzftrr9",
+        "type": "base",
+        "dimensions": {
+          "width": 120,
+          "height": 38
+        },
+        "computedPosition": {
+          "x": 420,
+          "y": 72,
+          "z": 0
+        },
+        "handleBounds": {
+          "source": [
+            {
+              "id": null,
+              "type": "source",
+              "nodeId": "fz23kzftrr9",
+              "position": "right",
+              "x": 115,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ],
+          "target": [
+            {
+              "id": null,
+              "type": "target",
+              "nodeId": "fz23kzftrr9",
+              "position": "left",
+              "x": -3,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ]
+        },
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": false,
+        "isParent": false,
+        "position": {
+          "x": 420,
+          "y": 72
+        },
+        "data": {
+          "tag": "fz23kzftrr9",
+          "tagRemark": "基础节点",
+          "label": "基础节点",
+          "type": "base"
+        },
+        "events": {},
+        "targetPosition": "left",
+        "sourcePosition": "right"
+      },
+      "targetNode": {
+        "id": "b2asyhsoitp",
+        "type": "base",
+        "dimensions": {
+          "width": 120,
+          "height": 38
+        },
+        "computedPosition": {
+          "x": 580,
+          "y": 72,
+          "z": 0
+        },
+        "handleBounds": {
+          "source": [
+            {
+              "id": null,
+              "type": "source",
+              "nodeId": "b2asyhsoitp",
+              "position": "right",
+              "x": 115,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ],
+          "target": [
+            {
+              "id": null,
+              "type": "target",
+              "nodeId": "b2asyhsoitp",
+              "position": "left",
+              "x": -3,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ]
+        },
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": false,
+        "isParent": false,
+        "position": {
+          "x": 580,
+          "y": 72
+        },
+        "data": {
+          "tag": "b2asyhsoitp",
+          "tagRemark": "基础节点",
+          "label": "基础节点",
+          "type": "base"
+        },
+        "events": {},
+        "targetPosition": "left",
+        "sourcePosition": "right"
+      },
+      "sourceX": 543,
+      "sourceY": 91,
+      "targetX": 577,
+      "targetY": 91
+    },
+    {
+      "id": "vueflow__edge-t0tp9la7t9j-xag8zkplfk",
+      "type": "base",
+      "source": "t0tp9la7t9j",
+      "target": "xag8zkplfk",
+      "sourceHandle": null,
+      "targetHandle": null,
+      "data": {},
+      "events": {},
+      "label": "",
+      "sourceNode": {
+        "id": "t0tp9la7t9j",
+        "type": "base",
+        "dimensions": {
+          "width": 120,
+          "height": 38
+        },
+        "computedPosition": {
+          "x": 100,
+          "y": 72,
+          "z": 0
+        },
+        "handleBounds": {
+          "source": [
+            {
+              "id": null,
+              "type": "source",
+              "nodeId": "t0tp9la7t9j",
+              "position": "right",
+              "x": 115,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ],
+          "target": [
+            {
+              "id": null,
+              "type": "target",
+              "nodeId": "t0tp9la7t9j",
+              "position": "left",
+              "x": -3,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ]
+        },
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": false,
+        "isParent": false,
+        "position": {
+          "x": 100,
+          "y": 72
+        },
+        "data": {
+          "tag": "t0tp9la7t9j",
+          "tagRemark": "基础节点",
+          "label": "基础节点",
+          "type": "base"
+        },
+        "events": {},
+        "targetPosition": "left",
+        "sourcePosition": "right"
+      },
+      "targetNode": {
+        "id": "xag8zkplfk",
+        "type": "base",
+        "dimensions": {
+          "width": 120,
+          "height": 38
+        },
+        "computedPosition": {
+          "x": 260,
+          "y": 125,
+          "z": 0
+        },
+        "handleBounds": {
+          "source": [
+            {
+              "id": null,
+              "type": "source",
+              "nodeId": "xag8zkplfk",
+              "position": "right",
+              "x": 115,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ],
+          "target": [
+            {
+              "id": null,
+              "type": "target",
+              "nodeId": "xag8zkplfk",
+              "position": "left",
+              "x": -3,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ]
+        },
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": false,
+        "isParent": false,
+        "position": {
+          "x": 260,
+          "y": 125
+        },
+        "data": {
+          "tag": "xag8zkplfk",
+          "tagRemark": "基础节点",
+          "label": "基础节点",
+          "type": "base"
+        },
+        "events": {},
+        "targetPosition": "left",
+        "sourcePosition": "right"
+      },
+      "sourceX": 223,
+      "sourceY": 91,
+      "targetX": 257,
+      "targetY": 144
+    },
+    {
+      "id": "vueflow__edge-t0tp9la7t9j-rg0xiuf52jc",
+      "type": "base",
+      "source": "t0tp9la7t9j",
+      "target": "rg0xiuf52jc",
+      "sourceHandle": null,
+      "targetHandle": null,
+      "data": {},
+      "events": {},
+      "label": "",
+      "sourceNode": {
+        "id": "t0tp9la7t9j",
+        "type": "base",
+        "dimensions": {
+          "width": 120,
+          "height": 38
+        },
+        "computedPosition": {
+          "x": 100,
+          "y": 72,
+          "z": 0
+        },
+        "handleBounds": {
+          "source": [
+            {
+              "id": null,
+              "type": "source",
+              "nodeId": "t0tp9la7t9j",
+              "position": "right",
+              "x": 115,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ],
+          "target": [
+            {
+              "id": null,
+              "type": "target",
+              "nodeId": "t0tp9la7t9j",
+              "position": "left",
+              "x": -3,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ]
+        },
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": false,
+        "isParent": false,
+        "position": {
+          "x": 100,
+          "y": 72
+        },
+        "data": {
+          "tag": "t0tp9la7t9j",
+          "tagRemark": "基础节点",
+          "label": "基础节点",
+          "type": "base"
+        },
+        "events": {},
+        "targetPosition": "left",
+        "sourcePosition": "right"
+      },
+      "targetNode": {
+        "id": "rg0xiuf52jc",
+        "type": "base",
+        "dimensions": {
+          "width": 120,
+          "height": 38
+        },
+        "computedPosition": {
+          "x": 260,
+          "y": 72,
+          "z": 0
+        },
+        "handleBounds": {
+          "source": [
+            {
+              "id": null,
+              "type": "source",
+              "nodeId": "rg0xiuf52jc",
+              "position": "right",
+              "x": 115,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ],
+          "target": [
+            {
+              "id": null,
+              "type": "target",
+              "nodeId": "rg0xiuf52jc",
+              "position": "left",
+              "x": -3,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ]
+        },
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": false,
+        "isParent": false,
+        "position": {
+          "x": 260,
+          "y": 72
+        },
+        "data": {
+          "tag": "rg0xiuf52jc",
+          "tagRemark": "基础节点",
+          "label": "基础节点",
+          "type": "base"
+        },
+        "events": {},
+        "targetPosition": "left",
+        "sourcePosition": "right"
+      },
+      "sourceX": 223,
+      "sourceY": 91,
+      "targetX": 257,
+      "targetY": 91
+    },
+    {
+      "id": "vueflow__edge-rg0xiuf52jc-fz23kzftrr9",
+      "type": "base",
+      "source": "rg0xiuf52jc",
+      "target": "fz23kzftrr9",
+      "sourceHandle": null,
+      "targetHandle": null,
+      "data": {},
+      "events": {},
+      "label": "",
+      "sourceNode": {
+        "id": "rg0xiuf52jc",
+        "type": "base",
+        "dimensions": {
+          "width": 120,
+          "height": 38
+        },
+        "computedPosition": {
+          "x": 260,
+          "y": 72,
+          "z": 0
+        },
+        "handleBounds": {
+          "source": [
+            {
+              "id": null,
+              "type": "source",
+              "nodeId": "rg0xiuf52jc",
+              "position": "right",
+              "x": 115,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ],
+          "target": [
+            {
+              "id": null,
+              "type": "target",
+              "nodeId": "rg0xiuf52jc",
+              "position": "left",
+              "x": -3,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ]
+        },
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": false,
+        "isParent": false,
+        "position": {
+          "x": 260,
+          "y": 72
+        },
+        "data": {
+          "tag": "rg0xiuf52jc",
+          "tagRemark": "基础节点",
+          "label": "基础节点",
+          "type": "base"
+        },
+        "events": {},
+        "targetPosition": "left",
+        "sourcePosition": "right"
+      },
+      "targetNode": {
+        "id": "fz23kzftrr9",
+        "type": "base",
+        "dimensions": {
+          "width": 120,
+          "height": 38
+        },
+        "computedPosition": {
+          "x": 420,
+          "y": 72,
+          "z": 0
+        },
+        "handleBounds": {
+          "source": [
+            {
+              "id": null,
+              "type": "source",
+              "nodeId": "fz23kzftrr9",
+              "position": "right",
+              "x": 115,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ],
+          "target": [
+            {
+              "id": null,
+              "type": "target",
+              "nodeId": "fz23kzftrr9",
+              "position": "left",
+              "x": -3,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ]
+        },
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": false,
+        "isParent": false,
+        "position": {
+          "x": 420,
+          "y": 72
+        },
+        "data": {
+          "tag": "fz23kzftrr9",
+          "tagRemark": "基础节点",
+          "label": "基础节点",
+          "type": "base"
+        },
+        "events": {},
+        "targetPosition": "left",
+        "sourcePosition": "right"
+      },
+      "sourceX": 383,
+      "sourceY": 91,
+      "targetX": 417,
+      "targetY": 91
+    },
+    {
+      "id": "vueflow__edge-xag8zkplfk-fz23kzftrr9",
+      "type": "base",
+      "source": "xag8zkplfk",
+      "target": "fz23kzftrr9",
+      "sourceHandle": null,
+      "targetHandle": null,
+      "data": {},
+      "events": {},
+      "label": "",
+      "sourceNode": {
+        "id": "xag8zkplfk",
+        "type": "base",
+        "dimensions": {
+          "width": 120,
+          "height": 38
+        },
+        "computedPosition": {
+          "x": 260,
+          "y": 125,
+          "z": 0
+        },
+        "handleBounds": {
+          "source": [
+            {
+              "id": null,
+              "type": "source",
+              "nodeId": "xag8zkplfk",
+              "position": "right",
+              "x": 115,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ],
+          "target": [
+            {
+              "id": null,
+              "type": "target",
+              "nodeId": "xag8zkplfk",
+              "position": "left",
+              "x": -3,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ]
+        },
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": false,
+        "isParent": false,
+        "position": {
+          "x": 260,
+          "y": 125
+        },
+        "data": {
+          "tag": "xag8zkplfk",
+          "tagRemark": "基础节点",
+          "label": "基础节点",
+          "type": "base"
+        },
+        "events": {},
+        "targetPosition": "left",
+        "sourcePosition": "right"
+      },
+      "targetNode": {
+        "id": "fz23kzftrr9",
+        "type": "base",
+        "dimensions": {
+          "width": 120,
+          "height": 38
+        },
+        "computedPosition": {
+          "x": 420,
+          "y": 72,
+          "z": 0
+        },
+        "handleBounds": {
+          "source": [
+            {
+              "id": null,
+              "type": "source",
+              "nodeId": "fz23kzftrr9",
+              "position": "right",
+              "x": 115,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ],
+          "target": [
+            {
+              "id": null,
+              "type": "target",
+              "nodeId": "fz23kzftrr9",
+              "position": "left",
+              "x": -3,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ]
+        },
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": false,
+        "isParent": false,
+        "position": {
+          "x": 420,
+          "y": 72
+        },
+        "data": {
+          "tag": "fz23kzftrr9",
+          "tagRemark": "基础节点",
+          "label": "基础节点",
+          "type": "base"
+        },
+        "events": {},
+        "targetPosition": "left",
+        "sourcePosition": "right"
+      },
+      "sourceX": 383,
+      "sourceY": 144,
+      "targetX": 417,
+      "targetY": 91
+    },
+    {
+      "id": "vueflow__edge-b2asyhsoitp-27d0vi27j7f",
+      "type": "base",
+      "source": "b2asyhsoitp",
+      "target": "27d0vi27j7f",
+      "sourceHandle": null,
+      "targetHandle": null,
+      "data": {},
+      "events": {},
+      "label": "",
+      "sourceNode": {
+        "id": "b2asyhsoitp",
+        "type": "base",
+        "dimensions": {
+          "width": 120,
+          "height": 38
+        },
+        "computedPosition": {
+          "x": 580,
+          "y": 72,
+          "z": 0
+        },
+        "handleBounds": {
+          "source": [
+            {
+              "id": null,
+              "type": "source",
+              "nodeId": "b2asyhsoitp",
+              "position": "right",
+              "x": 115,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ],
+          "target": [
+            {
+              "id": null,
+              "type": "target",
+              "nodeId": "b2asyhsoitp",
+              "position": "left",
+              "x": -3,
+              "y": 15,
+              "width": 8,
+              "height": 8
+            }
+          ]
+        },
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": false,
+        "isParent": false,
+        "position": {
+          "x": 580,
+          "y": 72
+        },
+        "data": {
+          "tag": "b2asyhsoitp",
+          "tagRemark": "基础节点",
+          "label": "基础节点",
+          "type": "base"
+        },
+        "events": {},
+        "targetPosition": "left",
+        "sourcePosition": "right"
+      },
+      "targetNode": {
+        "id": "27d0vi27j7f",
+        "type": "end",
+        "dimensions": {
+          "width": 34,
+          "height": 34
+        },
+        "computedPosition": {
+          "x": 749.5,
+          "y": 74,
+          "z": 0
+        },
+        "handleBounds": {
+          "source": [
+            {
+              "id": null,
+              "type": "source",
+              "nodeId": "27d0vi27j7f",
+              "position": "left",
+              "x": -3,
+              "y": 13,
+              "width": 8,
+              "height": 8
+            }
+          ],
+          "target": null
+        },
+        "selected": false,
+        "dragging": false,
+        "resizing": false,
+        "initialized": false,
+        "isParent": false,
+        "position": {
+          "x": 749.5,
+          "y": 74
+        },
+        "data": {
+          "tag": "27d0vi27j7f",
+          "tagRemark": "结束",
+          "label": "结束",
+          "type": "end"
+        },
+        "events": {},
+        "targetPosition": "left",
+        "sourcePosition": "right"
+      },
+      "sourceX": 703,
+      "sourceY": 91,
+      "targetX": 746.5,
+      "targetY": 91
+    }
+  ],
+  "viewport": {
+    "x": 385.75,
+    "y": 349.5,
+    "zoom": 1
+  }
+}
