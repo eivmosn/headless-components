@@ -4,15 +4,17 @@ import danmuku from 'artplayer-plugin-danmuku'
 import Hls from 'hls.js'
 import { onMounted, onUnmounted } from 'vue'
 
-type Contextmenu = Record<string, HTMLElement>
-type ArtplayerOption = Omit<Artplayer['option'], 'url' | 'container'>
-
 const props = withDefaults(defineProps<{
   url?: string
   option?: ArtplayerOption
 }>(), {
   url: 'https://sf1-cdn-tos.huoshanstatic.com/obj/media-fe/xgplayer_doc_video/hls/xgplayer-demo.m3u8',
 })
+
+Artplayer.USE_RAF = true
+Artplayer.LOG_VERSION = false
+
+type ArtplayerOption = Omit<Artplayer['option'], 'url' | 'container'>
 
 let art: Artplayer | null = null
 
@@ -40,14 +42,14 @@ const config: Artplayer['option'] = {
   volume: 0.5,
   isLive: false,
   muted: false,
-  pip: true,
-  autoMini: true,
+  pip: false,
+  autoMini: false,
   screenshot: true,
   setting: true,
   loop: false,
   flip: true,
   playbackRate: true,
-  aspectRatio: false,
+  aspectRatio: true,
   fullscreen: true,
   fullscreenWeb: true,
   subtitleOffset: true,
@@ -73,11 +75,23 @@ const config: Artplayer['option'] = {
   ...props.option,
 }
 
-function hideContextMenuItems(contextmenu: Contextmenu, items: string[]) {
-  for (let i = 0; i < items.length; i++) {
-    const item = items[i]
-    const node = contextmenu[item]
-    node.parentNode?.removeChild(node)
+function hackContextMenuItem(art: Artplayer, options?: {
+  text: string
+  url: string
+}) {
+  const link = art.template.$contextmenu.querySelector('.art-contextmenu-version a')
+  if (link && options) {
+    link.setAttribute('href', options.url)
+    link.innerHTML = options.text
+  }
+}
+
+function hackInfo(art: Artplayer) {
+  const close = art.template.$info.querySelector('.art-info-close')
+  if (close) {
+    close.innerHTML = `<svg width="1em" height="1em" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12" />
+</svg>`
   }
 }
 
@@ -88,7 +102,11 @@ function onVideoPlaying() {
 onMounted(() => {
   art = new Artplayer(config)
   if (art) {
-    hideContextMenuItems(art.contextmenu as Contextmenu, ['info', 'version'])
+    hackInfo(art)
+    hackContextMenuItem(art, {
+      url: 'https://wkdaily.cpolar.cn/',
+      text: 'custom-text',
+    })
     art.on('video:playing', onVideoPlaying)
   }
 })
@@ -105,5 +123,8 @@ onUnmounted(() => {
     <div class="p-10px">
       <div id="danmuku" />
     </div>
+  </div>
+  <div v-for="i in 100" :key="i">
+    {{ i }}
   </div>
 </template>
