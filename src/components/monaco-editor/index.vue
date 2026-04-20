@@ -1,16 +1,9 @@
 <script setup lang="ts">
 import type { MonacoEditorInstance, MonacoEditorProps } from './editor'
+import type { EditorExtensionRuntime } from './extensions'
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { ensureMonacoEnvironment, monaco } from './editor'
-import {
-  bindEditorExtensions,
-  createDerivationController,
-  createFindWidgetHackController,
-  createGlobalDeclarationsController,
-  createPlaceholderController,
-  createSnippetController,
-  createTagTokenController,
-} from './extensions'
+import { createEditorExtensionRuntime } from './extensions'
 
 const props = withDefaults(defineProps<MonacoEditorProps>(), {
   modelValue: '',
@@ -28,14 +21,7 @@ const containerRef = ref<HTMLDivElement | null>(null)
 
 let editor: monaco.editor.IStandaloneCodeEditor | null = null
 let model: monaco.editor.ITextModel | null = null
-let resizeObserver: ResizeObserver | null = null
-let derivationController: ReturnType<typeof createDerivationController> | null = null
-let findWidgetHackController: ReturnType<typeof createFindWidgetHackController> | null = null
-let placeholderController: ReturnType<typeof createPlaceholderController> | null = null
-let snippetController: ReturnType<typeof createSnippetController> | null = null
-let tagTokenController: ReturnType<typeof createTagTokenController> | null = null
-let globalDeclarationsController: ReturnType<typeof createGlobalDeclarationsController> | null = null
-let disposeExtensionBindings: (() => void) | null = null
+let extensionRuntime: EditorExtensionRuntime | null = null
 let isSyncingFromOutside = false
 
 function createEditor() {
@@ -44,14 +30,15 @@ function createEditor() {
     return
 
   ensureMonacoEnvironment()
+  const theme = resolveEditorTheme()
 
-  model = monaco.editor.createModel(props.modelValue, props.language)
+  model = createEditorModel()
   editor = monaco.editor.create(container, {
-    automaticLayout: false,
+    automaticLayout: true,
     minimap: { enabled: false },
     scrollBeyondLastLine: false,
     tabSize: 2,
-    theme: props.theme,
+    theme,
     model,
     fixedOverflowWidgets: true,
     smoothScrolling: true,
@@ -65,44 +52,25 @@ function createEditor() {
     emit('update:modelValue', editor.getValue())
   })
 
-  placeholderController = createPlaceholderController(editor, monaco, props.placeholder)
-  snippetController = createSnippetController(editor, monaco)
-  tagTokenController = createTagTokenController(editor, monaco)
-  derivationController = createDerivationController(monaco, props.derivations)
-  globalDeclarationsController = createGlobalDeclarationsController(monaco, props.globals)
-  findWidgetHackController = createFindWidgetHackController(editor)
-  disposeExtensionBindings = bindEditorExtensions(props, {
+  extensionRuntime = createEditorExtensionRuntime({
+    editor,
+    model,
     monaco,
-    getDerivationController: () => derivationController,
-    getEditor: () => editor,
-    getGlobalDeclarationsController: () => globalDeclarationsController,
-    getModel: () => model,
-    getPlaceholderController: () => placeholderController,
+    props,
   })
+}
 
-  resizeObserver = new ResizeObserver(() => {
-    editor?.layout()
-  })
-  resizeObserver.observe(container)
+function createEditorModel() {
+  return monaco.editor.createModel(props.modelValue, props.language)
+}
+
+function resolveEditorTheme() {
+  return props.theme
 }
 
 function disposeEditor() {
-  resizeObserver?.disconnect()
-  resizeObserver = null
-  disposeExtensionBindings?.()
-  disposeExtensionBindings = null
-  derivationController?.dispose()
-  derivationController = null
-  findWidgetHackController?.dispose()
-  findWidgetHackController = null
-  globalDeclarationsController?.dispose()
-  globalDeclarationsController = null
-  tagTokenController?.dispose()
-  tagTokenController = null
-  snippetController?.dispose()
-  snippetController = null
-  placeholderController?.dispose()
-  placeholderController = null
+  extensionRuntime?.dispose()
+  extensionRuntime = null
   editor?.dispose()
   editor = null
   model?.dispose()
@@ -130,12 +98,18 @@ watch(() => props.modelValue, (value) => {
   isSyncingFromOutside = false
 })
 
+watch(() => props.language, (language) => {
+  if (!model || !language)
+    return
+  monaco.editor.setModelLanguage(model, language)
+})
+
 defineExpose<MonacoEditorInstance>({
   focus() {
     editor?.focus()
   },
   insertTag(tag) {
-    tagTokenController?.insertTag(tag)
+    extensionRuntime?.get('tagTokens')?.insertTag(tag)
   },
 })
 </script>

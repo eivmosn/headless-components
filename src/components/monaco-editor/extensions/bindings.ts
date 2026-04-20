@@ -1,17 +1,15 @@
 import type * as Monaco from 'monaco-editor/esm/vs/editor/editor.api.js'
 import type { MonacoEditorProps } from '../editor'
-import type { DerivationController } from './derivation'
-import type { GlobalDeclarationsController } from './globals'
-import type { PlaceholderController } from './placeholder'
+import type { EditorExtensionControllerMap } from './runtime'
 import { nextTick, watch } from 'vue'
 
 export interface EditorBindingContext {
   monaco: typeof Monaco
-  getDerivationController: () => DerivationController | null
   getEditor: () => Monaco.editor.IStandaloneCodeEditor | null
   getModel: () => Monaco.editor.ITextModel | null
-  getGlobalDeclarationsController: () => GlobalDeclarationsController | null
-  getPlaceholderController: () => PlaceholderController | null
+  getController: <Key extends keyof EditorExtensionControllerMap>(
+    key: Key
+  ) => EditorExtensionControllerMap[Key] | null
 }
 
 export function bindEditorExtensions(
@@ -41,15 +39,15 @@ export function bindEditorExtensions(
   }, { deep: true })
 
   const stopPlaceholderWatch = watch(() => props.placeholder, (placeholder) => {
-    context.getPlaceholderController()?.update(placeholder)
+    context.getController('placeholder')?.update(placeholder)
   })
 
   const stopGlobalsWatch = watch(() => props.globals, (globals) => {
-    context.getGlobalDeclarationsController()?.update(globals)
+    context.getController('globals')?.update(globals)
   }, { deep: true })
 
   const stopDerivationsWatch = watch(() => props.derivations, (derivations) => {
-    context.getDerivationController()?.update(derivations)
+    context.getController('derivation')?.update(derivations)
   }, { deep: true })
 
   return () => {

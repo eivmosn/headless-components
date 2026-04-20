@@ -101,4 +101,6 @@ export function ensureMonacoEnvironment() {
   }
 }
 
+export const languages = monaco.languages
+
 export { monaco }
