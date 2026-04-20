@@ -164,10 +164,11 @@ function completeInput() {
               'keyboard-key--delete': key.variant === 'delete',
               'is-pressed': pressedKey === getKeyId(key, rowIndex),
             }"
+            tabindex="-1"
             type="button"
             @click="pressKey(key)"
             @pointercancel="releaseKey"
-            @pointerdown="holdKey(key, rowIndex)"
+            @pointerdown.prevent="holdKey(key, rowIndex)"
             @pointerleave="releaseKey"
             @pointerup="releaseKey"
           >
@@ -360,6 +361,17 @@ function completeInput() {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.delete-icon svg {
+  display: block;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
 }
 
 .home-indicator {
